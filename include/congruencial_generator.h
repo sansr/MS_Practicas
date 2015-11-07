@@ -8,13 +8,9 @@ typedef struct generator_parameters {
 } parameters;
 
 // Mutiplicative generator
-inline long mGenerator(parameters values) {
-  return ((values.a*values.prev)%values.mod);
-}
+long mGenerator(parameters values);
 
 // Linear generator
-inline long lGenerator(parameters values) {
-  return (((values.a*values.prev)+values.b)%values.mod);
-}
+long lGenerator(parameters values);
 
 // More types of congruencial generators could be added

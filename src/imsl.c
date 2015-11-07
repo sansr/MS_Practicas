@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////
 //                                                    //
 // IMSL generator takes two arguments:                //
-//   1- Amount of desired random values
-//   2- Seed's value  
+//   1- Amount of desired random values               //
+//   2- Seed's value                                  //
 //   3- File name to print the obtained random values //
 //                                                    //
 ////////////////////////////////////////////////////////

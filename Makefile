@@ -4,6 +4,7 @@ else
 	RM=rm -f
 endif
 
+# Directories
 INCLUDE=include
 BUILD=build
 SRC=src
@@ -15,12 +16,13 @@ CFLAGS= -g -Wall -Wextra -O3
 #CC = gcc $(CFLAGS)
 CC = clang $(CFLAGS)
 
-OBJECTS=$(BUILD)/imsl
+OBJECTS=$(BUILD)/congruencial_generators $(BUILD)/imsl
+SRCS=$(SRC)/*.c
 
 all: $(OBJECTS)
 
-$(OBJECTS): $(SRC)/*.c
-	$(CC) -I $(INCLUDE)/*.h $< -o $@
+$(OBJECTS): $(SRCS)
+	$(CC) -I $(INCLUDE)/*.h $(SRCS) -o $@
 
 .PHONY: clean
 
