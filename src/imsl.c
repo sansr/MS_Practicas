@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
     float u = (float)Xi/values.mod;
 
     // Write random numbers in a file 
-    fprintf(f, "%f\n", u);
+    fprintf(f, "%f ", u);
   }
  
   return 0;
