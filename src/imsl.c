@@ -7,11 +7,15 @@
 //                                                    //
 ////////////////////////////////////////////////////////
 
+#include "/opt/TestU01/include/ulcg.h"
+#include "/opt/TestU01/include/unif01.h"
+#include "/opt/TestU01/include/bbattery.h"
+#include "../include/congruencial_generator.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
-#include "../include/congruencial_generator.h"
+
 
 void _help(void) {
   printf("The number of arguments should be three\n");
@@ -23,6 +27,11 @@ int main(int argc, char* argv[]) {
   // Check if imsl receives three arguments (amount of random numbers, seed and output file)
   if (argc != 4 || strcmp(argv[1],"--help") == 0) {
     _help();
+  }
+
+  if (atol(argv[1]) < 51320000) {
+    printf("The amount of random values should be at least 51320000\n");
+    exit(1);
   }
   
   // Define the parameters of the generator
@@ -53,6 +62,9 @@ int main(int argc, char* argv[]) {
     // Write random numbers in a file 
     fprintf(f, "%f ", u);
   }
+  
+  // Tests
+  bbattery_SmallCrushFile(argv[3]);
  
   return 0;
 }

@@ -1,1 +1,4 @@
-/build/*.o
+*.o
+SmallCrush
+imsl
+congruencial_generators
