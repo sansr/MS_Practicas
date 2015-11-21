@@ -50,7 +50,16 @@ class Machine(object):
                 yield self.env.timeout(random.expovariate(paramExponential))
                 print('%s repaired at %.2f.' % (self.m_name, self.env.now))
 
-                
+# Proceso encargado de asegurar que siempre hay 10 maquinas en el sistema
+def system_failing(env, system):
+    while True:
+        # Le he puesto un timeout "simbolico" para poder ponerlo en
+        # un proceso aparte que monitorice
+        yield env.timeout(0.5)
+        if system.count < 10:
+            print('System failed. It shoud be 10 machines working')
+            exit()
+        
 # Create an environment and start the setup process
 print('System started')
 random.seed(RANDOM_SEED)
@@ -65,6 +74,8 @@ total_machines = NUM_MACHINES + REPOSITORY
 for i in range(total_machines):
     Machine(env, 'Machine %d' % i, system, repairman)
 
+env.process(system_failing(env, system)
+)
 # Ejecuta la simulacion
 env.run(until=SIM_TIME)
     
